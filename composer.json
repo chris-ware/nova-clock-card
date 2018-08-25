@@ -1,6 +1,7 @@
 {
     "name": "chris-ware/nova-clock-card",
-    "description": "A Laravel Nova card.",
+    "description": "A Laravel Nova card to display the date and time.",
+    "version": "1.0.0",
     "keywords": [
         "laravel",
         "nova"
