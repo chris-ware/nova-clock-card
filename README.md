@@ -24,5 +24,25 @@ public function cards()
 }
 ```
 
+ ## Customization
+ You are able to customize date & time formats, locale and timezone. By default locale and timezone is taken from `config/app.php`
+
+```php
+// in app/Providers/NovaServiceProvder.php
+
+// ...
+public function cards()
+{
+    return [
+        // ...
+        (new \ChrisWare\NovaClockCard\NovaClockCard)
+            ->locale('sk')
+            ->dateFormat('dddd, Do MMMM YYYY')
+            ->timeFormat('LTS')
+            ->timezone('UTC'),
+    ];
+}
+```
+
  ## Information
  This card will pull in your set timezone from `config/app.php` and use it to display the date and time.

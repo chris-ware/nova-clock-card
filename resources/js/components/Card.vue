@@ -13,34 +13,29 @@
 
         data: () => {
             return {
-                time: 'Nova Clock Card',
+                time: '',
                 date: '',
-                timezone: 'UTC'
             };
         },
 
+        mounted() {
+            this.startInterval();
+            this.updateCurrentTime();
+        },
+
         methods: {
-            updateCurrentTime: function () {
-                this.datetime = moment().tz(this.timezone);
-                this.time = this.datetime.format('LTS');
-                this.date = this.datetime.format('dddd, MMMM Do YYYY');
+            updateCurrentTime() {
+                let { locale, timeFormat, dateFormat, timezone } = this.card
+
+                this.datetime = moment().locale(locale).tz(timezone);
+                this.time = this.datetime.format(timeFormat);
+                this.date = this.datetime.format(dateFormat);
             },
-            startInterval: function () {
-                const _this = this;
-                setInterval(
-                function () {
-                    return _this.updateCurrentTime();
+            startInterval() {
+                setInterval(() => {
+                    return this.updateCurrentTime();
                 }, 1000);
             }
-        },
-        mounted() {
-
-            Nova.request().get('/nova-vendor/nova-clock-card/timezone').then(response => {
-                this.timezone = response.data;
-                this.updateCurrentTime();
-                this.startInterval();
-            });
-
         }
     }
 </script>
