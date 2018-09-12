@@ -2,7 +2,7 @@
 
 namespace ChrisWare\NovaClockCard;
 
-use Laravel\Nova\Card;
+use \Laravel\Nova\Card;
 
 class NovaClockCard extends Card
 {
@@ -12,6 +12,36 @@ class NovaClockCard extends Card
      * @var string
      */
     public $width = '1/3';
+
+    public function __construct()
+    {
+        return $this->withMeta([
+            'dateFormat'    => 'dddd, MMMM Do YYYY',
+            'timezone'      => config('app.timezone'),
+            'timeFormat'    => 'LTS',
+            'locale'        =>  config('app.locale'),
+        ]);
+    }
+
+    public function dateFormat(string $dateFormat)
+    {
+        return $this->withMeta(['dateFormat' => $dateFormat]);
+    }
+
+    public function timeFormat(string $timeFormat)
+    {
+        return $this->withMeta(['timeFormat' => $timeFormat]);
+    }
+
+    public function locale($locale)
+    {
+        return $this->withMeta(['locale' => $locale]);
+    }
+
+    public function timezone($timezone)
+    {
+        return $this->withMeta(['timezone' => $timezone]);
+    }
 
     /**
      * Get the component name for the element.

@@ -13,7 +13,3 @@ use Illuminate\Support\Facades\Route;
 | as many additional routes to this file as your card may require.
 |
 */
-
-Route::get('timezone', function (Request $request) {
-    return config('app.timezone');
-});
