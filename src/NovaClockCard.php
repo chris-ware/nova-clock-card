@@ -20,6 +20,7 @@ class NovaClockCard extends Card
             'timezone'      => config('app.timezone'),
             'timeFormat'    => 'LTS',
             'locale'        =>  config('app.locale'),
+            'display'       => 'text',
         ]);
     }
 
@@ -41,6 +42,11 @@ class NovaClockCard extends Card
     public function timezone($timezone)
     {
         return $this->withMeta(['timezone' => $timezone]);
+    }
+
+    public function display($displayType)
+    {
+        return $this->withMeta(['display' => $displayType]);
     }
 
     /**
