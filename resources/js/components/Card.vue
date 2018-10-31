@@ -4,7 +4,7 @@
             <h1 class="text-center text-3xl te text-80 font-light" v-text="time"></h1>
             <p class="text-center font-light" v-text="date"></p>
         </div>
-        <div v-else-if="display === 'analog'">
+        <div v-else-if="display === 'analogue'">
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100px" height="100px">
                 <circle cx="50" cy="50" r="50" fill="none" stroke="black" stroke-width="2" />
                 <line x1="50" y1="50" :x2="hourPosition.x" :y2="hourPosition.y" stroke="black" stroke-width="4" />

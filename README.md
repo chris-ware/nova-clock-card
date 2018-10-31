@@ -25,7 +25,7 @@ public function cards()
 ```
 
  ## Customization
- You are able to customize date & time formats, locale and timezone. By default locale and timezone is taken from `config/app.php`
+ You are able to customize date & time formats, locale and timezone and display type. By default locale and timezone is taken from `config/app.php`. The default display type is `text`. The `analogue` display type is also available.
 
 ```php
 // in app/Providers/NovaServiceProvder.php
@@ -39,7 +39,8 @@ public function cards()
             ->locale('sk')
             ->dateFormat('dddd, Do MMMM YYYY')
             ->timeFormat('LTS')
-            ->timezone('UTC'),
+            ->timezone('UTC')
+            ->display('analogue'),
     ];
 }
 ```
