@@ -9,6 +9,7 @@
                 <circle cx="50" cy="50" r="50" fill="none" stroke="black" stroke-width="2" />
                 <line x1="50" y1="50" :x2="hourPosition.x" :y2="hourPosition.y" stroke="black" stroke-width="4" />
                 <line x1="50" y1="50" :x2="minutePosition.x" :y2="minutePosition.y" stroke="black" stroke-width="2" />
+                <line x1="50" y1="50" :x2="secondPosition.x" :y2="secondPosition.y" stroke="black" stroke-width="1" />
             </svg>
         </div>
     </card>
@@ -25,6 +26,7 @@
                 display: '',
                 hour: 0,
                 minute: 0,
+                second: 0,
             };
         },
 
@@ -41,6 +43,13 @@
                 return {
                     x: Math.sin(minuteRad) * 40 + 50,
                     y: Math.cos(minuteRad) * 40 + 50
+                }
+            },
+            secondPosition: function() {
+                const secondRad = this.second * Math.PI / 180;
+                return {
+                    x: Math.sin(secondRad) * 45 + 50,
+                    y: Math.cos(secondRad) * 45 + 50
                 }
             }
         },
@@ -59,6 +68,7 @@
                 this.date = this.datetime.format(dateFormat);
                 this.hour = 180 - ((this.datetime.format('h') * 30) + (this.datetime.format('m') / 2));
                 this.minute = 180 - this.datetime.format('m') * 6;
+                this.second = 180 - this.datetime.format('s') * 6;
                 this.display = display;
             },
             startInterval() {
