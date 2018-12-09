@@ -1,6 +1,11 @@
 # Nova Clock Card
 A clock card for Laravel Nova
 
+[![Latest Stable Version](https://badgen.net/packagist/v/chris-ware/nova-clock-card)](https://packagist.org/packages/chris-ware/nova-clock-card)
+[![Total Downloads](https://badgen.net/packagist/dt/chris-ware/nova-clock-card)](ttps://packagist.org/packages/chris-ware/nova-clock-card)
+[![License](https://badgen.net/packagist/license/chris-ware/nova-clock-card)](ttps://packagist.org/packages/chris-ware/nova-clock-card)
+[![StyleCI](https://github.styleci.io/repos/146102919/shield?branch=master)](https://github.styleci.io/repos/146102919)
+
  ## Installation
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
