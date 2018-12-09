@@ -28,8 +28,6 @@
         computed: {
             clockStyle() {
                 return {
-                    height: this.size,
-                    width: this.size,
                     color: this.color,
                     border: this.border,
                     background: this.bg
@@ -43,7 +41,6 @@
         },
         methods: {
             show() {
-                console.log(this.datetime.format('h:m:s'));
                 let datetime;
                 if (this.datetime) {
                     datetime = this.datetime;
