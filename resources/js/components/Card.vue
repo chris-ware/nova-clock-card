@@ -5,53 +5,25 @@
             <p class="text-center font-light" v-text="date"></p>
         </div>
         <div v-else-if="display === 'analogue'">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100px" height="100px">
-                <circle cx="50" cy="50" r="50" fill="none" stroke="black" stroke-width="2" />
-                <line x1="50" y1="50" :x2="hourPosition.x" :y2="hourPosition.y" stroke="black" stroke-width="4" />
-                <line x1="50" y1="50" :x2="minutePosition.x" :y2="minutePosition.y" stroke="black" stroke-width="2" />
-                <line x1="50" y1="50" :x2="secondPosition.x" :y2="secondPosition.y" stroke="black" stroke-width="1" />
-            </svg>
+            <analogue-clock :time="analogTime" :datetime="datetime"></analogue-clock>
         </div>
     </card>
 </template>
 
 <script>
+    import AnalogueClock from './AnalogueClock'
+
     export default {
         props: ['card'],
-
+        components: {AnalogueClock},
         data: () => {
             return {
                 time: '',
                 date: '',
                 display: '',
-                hour: 0,
-                minute: 0,
-                second: 0,
+                datetime: '',
+                analogTime: '',
             };
-        },
-
-        computed: {
-            hourPosition: function() {
-                const hourRad = this.hour * Math.PI / 180;
-                return {
-                    x: Math.sin(hourRad) * 30 + 50,
-                    y: Math.cos(hourRad) * 30 + 50
-                }
-            },
-            minutePosition: function() {
-                const minuteRad = this.minute * Math.PI / 180;
-                return {
-                    x: Math.sin(minuteRad) * 40 + 50,
-                    y: Math.cos(minuteRad) * 40 + 50
-                }
-            },
-            secondPosition: function() {
-                const secondRad = this.second * Math.PI / 180;
-                return {
-                    x: Math.sin(secondRad) * 45 + 50,
-                    y: Math.cos(secondRad) * 45 + 50
-                }
-            }
         },
 
         mounted() {
@@ -66,10 +38,8 @@
                 this.datetime = moment().locale(locale).tz(timezone);
                 this.time = this.datetime.format(timeFormat);
                 this.date = this.datetime.format(dateFormat);
-                this.hour = 180 - ((this.datetime.format('h') * 30) + (this.datetime.format('m') / 2));
-                this.minute = 180 - this.datetime.format('m') * 6;
-                this.second = 180 - this.datetime.format('s') * 6;
                 this.display = display;
+                this.analogTime = this.datetime.format('h:m:s');
             },
             startInterval() {
                 setInterval(() => {
