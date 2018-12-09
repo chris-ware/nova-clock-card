@@ -2,7 +2,7 @@
 
 namespace ChrisWare\NovaClockCard;
 
-use \Laravel\Nova\Card;
+use Laravel\Nova\Card;
 
 class NovaClockCard extends Card
 {
@@ -19,7 +19,7 @@ class NovaClockCard extends Card
             'dateFormat'    => 'dddd, MMMM Do YYYY',
             'timezone'      => config('app.timezone'),
             'timeFormat'    => 'LTS',
-            'locale'        =>  config('app.locale'),
+            'locale'        => config('app.locale'),
             'display'       => 'text',
         ]);
     }
